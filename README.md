@@ -1,9 +1,12 @@
 # ilab RAG ingestion pipeline
-E.g. how to overcome the limitation of adding new commands to the `ilab` CLI to ingest user documents to a vector of text embeddings for the
-RAG pipelines:
-1. Transform user docs to `ilab` schema (and `docling`, under the scenes) as the `pre-processed artifacts`
-2. Generate embeddings from these pre-processed (JSON) artifacts to a configured vector DB
-## Transforming user docs
+*E.g. how to overcome the current limitation of adding new commands to the `ilab` CLI v1.4 to ingest user documents for the RAG pipelines.*
+
+## 1. Overview
+To enable the ingestion of user documents and store them in a vector database for RAG pipelines, the following steps are involved:
+1. Transform user documents into the `ilab` schema (using `docling` under the scenes) to generate pre-processed artifacts.
+1. Generate embeddings from these pre-processed (JSON) artifacts and store them in a configured vector DB for use in the RAG pipeline.
+
+## 2. Transforming user docs
 Install `instructlab` dependencies, using one of the available options from the [installation sections](https://docs.instructlab.ai/) of the 
 `InstructLab Project`. 
 
@@ -59,7 +62,10 @@ Created 1 chunks from 1 input documents
 prepare() executed in 35.50 seconds.
 ```
 
-## Code management
+## 3. Generate embeddings from pre-processed artifacts
+**TODO**
+
+## 4. Code management
 Run the following to ensure the code is properly formatted and imports follow the standards:
 ```bash
 pip install isort
