@@ -10,7 +10,7 @@ To enable the ingestion of user documents and store them in a vector database fo
 Install `instructlab` dependencies, using one of the available options from the [installation sections](https://docs.instructlab.ai/) of the 
 `InstructLab Project`. 
 
-TLDR;)
+**TL;DR**
 ```bash
 pip install instructlab
 ```
