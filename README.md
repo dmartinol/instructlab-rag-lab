@@ -63,7 +63,19 @@ prepare() executed in 35.50 seconds.
 ```
 
 ## 3. Generate embeddings from pre-processed artifacts
-**TODO**
+Use the provided notebook [ilab-ingest-rag-embeddings.ipynb](./ilab-ingest-rag-embeddings.ipynb)
+to load the generated artifacts in a local MilvusLIte db at `./milbus.db`.
+
+The notebok uses an [Haystack Pipeline](https://docs.haystack.deepset.ai/v1.21/docs/pipelines) to run the 
+ingestion pipeline:
+* Loads the artifacts using the [JSONConverter](https://docs.haystack.deepset.ai/docs/jsonconverter)
+* Joins them using a [DocumentJoiner](https://docs.haystack.deepset.ai/docs/documentjoiner)
+* Preprocess the joined document with a [DocumentCleaner](https://docs.haystack.deepset.ai/docs/documentcleaner)
+* Divides the documents into a list of shorter text documents with a [DocumentSplitter](https://docs.haystack.deepset.ai/docs/documentsplitter)
+* Computes the documents embeddings using a [SentenceTransformersDocumentEmbedder](), with the
+  `sentence-transformers/all-MiniLM-L6-v2` embeddings model.
+* Finally uses a [DocumentWriter](https://docs.haystack.deepset.ai/docs/documentwriter) to store the
+  embedding vectors on the configured MilvudLite database.
 
 ## 4. Code management
 Run the following to ensure the code is properly formatted and imports follow the standards:
@@ -72,3 +84,7 @@ pip install isort
 ruff format .
 isort .
 ```
+
+## TODO
+* Remove non-paragraph sections from `docling` artifacts
+* Evaluation service
